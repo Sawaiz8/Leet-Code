@@ -1,3 +1,6 @@
+#Counts the number of primes number up until a given number
+#Came up with my own recursive algorithm based on division to solve the problem
+
 def isNotPrime(element, primes):
   for i in range(1, len(primes)):
       if element % primes[i] == 0:
