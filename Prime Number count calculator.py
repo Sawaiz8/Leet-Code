@@ -1,90 +1,3 @@
-'''
-from math import floor
-
-def factorial(primes):
-   if len(primes) == 0:
-      return 1
-   else:
-       return primes[-1]  * factorial(primes[:len(primes) - 1])
-
-primes = list()
-primes.append(2)
-question = 500
-total = question // 2 + 1 
-for element in range(3,question//2,2):
-    if element == 9:
-       continue
-    noOfElementsDivisibleByElement = question//element
-    removers = noOfElementsDivisibleByElement - floor(noOfElementsDivisibleByElement / 2)
-    for i in range(2, len(primes) + 1):
-        if i == 9:
-           continue
-        fml = floor(noOfElementsDivisibleByElement / factorial(primes[:i]))
-        if fml == 0:
-           fml = 1
-        removers -= fml
-    print(total, removers, element)
-    primes.append(element)
-    total -= (removers - 1)
-    
-
-
-
-
-count = 0
-for i in range(0,501,3):
-   if i % 2 == 0:
-      count += 1
-print(count)
-
-
-def isNotPrime(element, primes):
-   for el in primes:
-      if element % el == 0:
-         return True
-   return False
-
-def func(primes, x):
-   if x == 0:
-      return 0
-   else:
-      total = x - x // primes[0]
-      for i in range(1, len(primes)):
-         total -= func(primes[:i], x//primes[i])
-      return total
-
-print(func([2], 3))
-
-primes = list()
-primes.append(2)
-question = 500
-total = question // 2 
-done = True
-for element in range(3,total,2):
-   if element > 7 and isNotPrime(element, primes):
-      continue
-   noOfElementsDivisibleByElement = question//element
-   remover = func(primes, noOfElementsDivisibleByElement)
-   if remover == 1:
-      done = True
-      total -= 0
-      break
-   total = total - remover + 1
-   primes.append(element)
-print(total)   
-
-
-
-def fac_mul2(x, n):
-   if x == 1 and n > 2:
-      return 1 + fac_mul(0, n-2)
-   elif x == 0 and n <= 2:
-      return 1
-   elif n <= 2:
-       return x//2
-   else:
-       return fac_mul(x//n, n - 2)
-'''
 def isNotPrime(element, primes):
   for i in range(1, len(primes)):
       if element % primes[i] == 0:
@@ -126,7 +39,7 @@ def countPrimes(n):
 x = 5000000000
 print(countPrimes(x))
 
-#Better code from leetcode
+#Better Solution from leetcode
 '''
 def countPrimes(n):
   n -= 1
